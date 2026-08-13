@@ -8,7 +8,7 @@ Built with ROS2 Humble, MoveIt2, and Gazebo Classic on Ubuntu 22.04.
 
 ## What is this and why does it matter?
 
-Surgical robots like the da Vinci (Johnson and Johnson) and Mako (Stryker) need to position instruments with millimeter level precision while making sure the arm never moves too fast or goes somewhere it shouldn't. This project simulates exactly that problem in software, without needing any physical hardware.
+Surgical robots need to position instruments with millimeter level precision while making sure the arm never moves too fast or goes somewhere it shouldn't. This project simulates exactly that problem in software, without needing any physical hardware.
 
 When you run this simulator, three things happen at the same time:
 
@@ -18,7 +18,7 @@ When you run this simulator, three things happen at the same time:
 
 **The surgical controller** is the safety layer written in Python. Before any motion happens it checks three things: is the target inside the allowed workspace? Is the tip moving slower than 100 mm/s? Did the arm land within 1 mm of the target? If anything is wrong it stops and logs an error instead of moving.
 
-Everything gets written to a CSV file in real time so you can review position error, tip velocity, and planning speed after a test run. This is the same approach real medical robotics engineers use to verify their systems before anything goes near a patient.
+Everything gets written to a CSV file in real time so you can review position error, tip velocity, and planning speed after a test run. This mirrors the kind of simulation-based verification used before any system goes near a patient.
 
 ---
 
@@ -225,7 +225,7 @@ A C++ version of the controller node for better real time performance
 
 ## Background
 
-I built this project to develop hands on experience with the tools and architecture used in surgical robotics, specifically targeting roles at companies like J&J MedTech, Stryker, Medtronic, and Globus Medical. It demonstrates end to end ROS2 system design, MoveIt2 motion planning, real time safety critical control logic, and simulation based verification.
+I built this project to get hands-on experience with the tools and architecture used in surgical robotics. It demonstrates end to end ROS2 system design, MoveIt2 motion planning, real time safety critical control logic, and simulation based verification — the kind of workflow used to validate robotic systems before deployment in precision-critical environments.
 
 Skills used: ROS2 Humble, MoveIt2, Gazebo, Python, inverse kinematics, OMPL/RRTConnect motion planning, workspace constraint enforcement, real time metrics logging, unit testing, Ubuntu/WSL2.
 
