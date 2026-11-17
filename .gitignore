@@ -15,8 +15,9 @@ __pycache__/
 *.bag
 *.bag.active
 
-# Metrics output
+# Metrics and logs output
 surgical_sim_metrics.csv
+surgitwin_safety_events.csv
 
 # Editor
 .vscode/

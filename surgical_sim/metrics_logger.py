@@ -1,6 +1,6 @@
 """
-metrics_logger.py
-=================
+metrics_logger.py: Metrics logging for surgical simulation.
+
 Subscribes to /tool_pose and /target_pose, computes position/orientation
 error and tip velocity, and writes to a CSV file for offline analysis.
 

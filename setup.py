@@ -14,7 +14,7 @@ setup(
         (os.path.join('share', package_name, 'launch'), glob('launch/*.py')),
         (os.path.join('share', package_name, 'config'), glob('config/*.yaml')),
         (os.path.join('share', package_name, 'worlds'), glob('worlds/*.world')),
-        (os.path.join('share', package_name, 'urdf'), glob('urdf/*.urdf.xacro')),
+        (os.path.join('share', package_name, 'urdf'), glob('urdf/*.urdf*')),
     ],
     install_requires=['setuptools'],
     zip_safe=True,
@@ -26,8 +26,12 @@ setup(
     entry_points={
         'console_scripts': [
             'surgical_controller = surgical_sim.surgical_controller:main',
-            'pose_publisher     = surgical_sim.pose_publisher:main',
-            'metrics_logger     = surgical_sim.metrics_logger:main',
+            'pose_publisher = surgical_sim.pose_publisher:main',
+            'metrics_logger = surgical_sim.metrics_logger:main',
+            'surgitwin_safety_controller = surgical_sim.surgitwin_safety_controller:main',
+            'vision_target_node = surgical_sim.vision_target_node:main',
+            'robot_sim_node = surgical_sim.robot_sim_node:main',
+            'surgitwin_medical_node = surgical_sim.surgitwin_medical_node:main',
         ],
     },
 )

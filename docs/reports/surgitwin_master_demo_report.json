@@ -1,0 +1,148 @@
+{
+  "title": "SurgiTwin Full-System Integration Master Verification",
+  "timestamp": "2026-11-17T17:55:57Z",
+  "total_steps": 19,
+  "passed_steps": 19,
+  "failed_steps": 0,
+  "steps": [
+    {
+      "step": 1,
+      "title": "ROS 2 System Initialization",
+      "status": "PASSED",
+      "details": "Nodes initialized (safety, robot_sim, virtual_mcu)",
+      "timestamp": "2026-11-17T17:55:51Z"
+    },
+    {
+      "step": 2,
+      "title": "Synthetic Camera Target Generation",
+      "status": "PASSED",
+      "details": "640x480 ArUco synthetic frame created",
+      "timestamp": "2026-11-17T17:55:51Z"
+    },
+    {
+      "step": 3,
+      "title": "Vision Detection & 3D Registration",
+      "status": "PASSED",
+      "details": "Detected pixel (319.5, 239.5) -> Base: (-0.001, 0.351, 0.200) m",
+      "timestamp": "2026-11-17T17:55:51Z"
+    },
+    {
+      "step": 4,
+      "title": "Safety Acceptance of Valid Target",
+      "status": "PASSED",
+      "details": "Accepted: True -> Forwarded to /safe_target_pose",
+      "timestamp": "2026-11-17T17:55:51Z"
+    },
+    {
+      "step": 5,
+      "title": "Safety Rejection of Unsafe Target",
+      "status": "PASSED",
+      "details": "Blocked target at X=0.95 m (Total rejections: 1)",
+      "timestamp": "2026-11-17T17:55:52Z"
+    },
+    {
+      "step": 6,
+      "title": "Synthetic DICOM Series Generation",
+      "status": "PASSED",
+      "details": "Generated 16 DICOM slices with target at (0.0, 10.0, 20.0) mm",
+      "timestamp": "2026-11-17T17:55:52Z"
+    },
+    {
+      "step": 7,
+      "title": "3D Medical Volume Reconstruction",
+      "status": "PASSED",
+      "details": "Volume reconstructed: shape (16, 64, 64), spacing (2.50, 1.50, 1.50) mm",
+      "timestamp": "2026-11-17T17:55:52Z"
+    },
+    {
+      "step": 8,
+      "title": "Target Lesion Segmentation",
+      "status": "PASSED",
+      "details": "Segmented 384 voxels (2160.0 mm^3)",
+      "timestamp": "2026-11-17T17:55:52Z"
+    },
+    {
+      "step": 9,
+      "title": "Anatomical Centroid Extraction",
+      "status": "PASSED",
+      "details": "Centroid: [-0.   10.14 20.  ] mm (R_equiv: 8.02 mm)",
+      "timestamp": "2026-11-17T17:55:52Z"
+    },
+    {
+      "step": 10,
+      "title": "Patient-to-Robot Coordinate Registration",
+      "status": "PASSED",
+      "details": "Transformed to base_link: (-0.0000, 0.3700, 0.1699) m",
+      "timestamp": "2026-11-17T17:55:52Z"
+    },
+    {
+      "step": 11,
+      "title": "Medical Target Safety Verification",
+      "status": "PASSED",
+      "details": "Medical target approved by safety supervisor: True",
+      "timestamp": "2026-11-17T17:55:52Z"
+    },
+    {
+      "step": 12,
+      "title": "Trajectory Execution in Robot Simulator",
+      "status": "PASSED",
+      "details": "State: COMPLETED in 4.67 s",
+      "timestamp": "2026-11-17T17:55:57Z"
+    },
+    {
+      "step": 13,
+      "title": "Tracking & Tool Position Metrics",
+      "status": "PASSED",
+      "details": "Final error: 0.880 mm, Dynamic Max: 1.814 mm, RMS: 1.040 mm",
+      "timestamp": "2026-11-17T17:55:57Z"
+    },
+    {
+      "step": 14,
+      "title": "Simulated Optical Encoder Feedback",
+      "status": "PASSED",
+      "details": "Encoder tracking fidelity within optical resolution: True",
+      "timestamp": "2026-11-17T17:55:57Z"
+    },
+    {
+      "step": 15,
+      "title": "Emergency Stop Assertion During Motion",
+      "status": "PASSED",
+      "details": "Asynchronously asserted /safety/emergency_stop during trajectory execution",
+      "timestamp": "2026-11-17T17:55:57Z"
+    },
+    {
+      "step": 16,
+      "title": "Emergency Stop Verification",
+      "status": "PASSED",
+      "details": "Robot state: ESTOPPED, MCU state: ESTOPPED, Active braking: True",
+      "timestamp": "2026-11-17T17:55:57Z"
+    },
+    {
+      "step": 17,
+      "title": "Command Rejection During E-Stop",
+      "status": "PASSED",
+      "details": "Motion commands strictly blocked during active E-stop: True",
+      "timestamp": "2026-11-17T17:55:57Z"
+    },
+    {
+      "step": 18,
+      "title": "Approved Safety Reset Restoration",
+      "status": "PASSED",
+      "details": "Safety service reset: True, System state restored to NORMAL/READY",
+      "timestamp": "2026-11-17T17:55:57Z"
+    },
+    {
+      "step": 19,
+      "title": "Machine-Readable Final Report Generation",
+      "status": "PASSED",
+      "details": "Exported audit log to: /home/vaish123/robotics/SurgiTwin/docs/reports/surgitwin_master_demo_report.json",
+      "timestamp": "2026-11-17T17:55:57Z"
+    }
+  ],
+  "metrics": {
+    "vision_target_error_mm": 0.7654655446197253,
+    "medical_target_error_mm": 0.8796700515548123,
+    "dynamic_rms_error_mm": 1.0404207315273748,
+    "hardware_telemetry_samples": 327
+  }
+}

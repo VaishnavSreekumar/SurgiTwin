@@ -1,6 +1,6 @@
 """
-pose_publisher.py
-=================
+pose_publisher.py: Interactive target pose publisher.
+
 Interactive CLI node for publishing target poses to /target_pose.
 Use this for manual testing during development.
 

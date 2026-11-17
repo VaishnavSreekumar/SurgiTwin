@@ -1,0 +1,20 @@
+{
+  "ground_truth_patient_mm": [
+    0.0,
+    10.0,
+    20.0
+  ],
+  "ground_truth_radius_mm": 8.0,
+  "extracted_centroid_patient_mm": [
+    -0.0,
+    10.1406,
+    20.0
+  ],
+  "extracted_radius_mm": 8.019,
+  "robot_base_coordinates_m": [
+    -0.0,
+    0.37,
+    0.16986
+  ],
+  "registration_simulated": true
+}

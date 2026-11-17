@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  surgitwin_manipulator.urdf
+  SurgiTwin 6-DOF Educational Surgical Robotic Manipulator Description
+  Anatomically and mechanically plausible serial manipulator model based on standard
+  UR5e kinematic geometry with surgical instrument end-effector attachment.
+-->
+<robot name="surgitwin_manipulator">
+
+  <!-- World coordinate frame -->
+  <link name="world"/>
+
+  <!-- Base Link / Mounting pedestal -->
+  <link name="base_link">
+    <visual>
+      <geometry>
+        <cylinder radius="0.075" length="0.05"/>
+      </geometry>
+      <origin xyz="0 0 0.025" rpy="0 0 0"/>
+      <material name="dark_gray">
+        <color rgba="0.25 0.25 0.25 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder radius="0.075" length="0.05"/>
+      </geometry>
+      <origin xyz="0 0 0.025" rpy="0 0 0"/>
+    </collision>
+    <inertial>
+      <mass value="4.0"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0.0044" ixy="0.0" ixz="0.0" iyy="0.0044" iyz="0.0" izz="0.0078"/>
+    </inertial>
+  </link>
+
+  <joint name="world_to_base" type="fixed">
+    <parent link="world"/>
+    <child link="base_link"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+
+  <!-- Shoulder Link -->
+  <link name="shoulder_link">
+    <visual>
+      <geometry>
+        <cylinder radius="0.06" length="0.1625"/>
+      </geometry>
+      <origin xyz="0 0 0.08125" rpy="0 0 0"/>
+      <material name="metallic_blue">
+        <color rgba="0.15 0.45 0.75 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder radius="0.06" length="0.1625"/>
+      </geometry>
+      <origin xyz="0 0 0.08125" rpy="0 0 0"/>
+    </collision>
+    <inertial>
+      <mass value="3.7"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0.0102" ixy="0.0" ixz="0.0" iyy="0.0102" iyz="0.0" izz="0.0066"/>
+    </inertial>
+  </link>
+
+  <joint name="shoulder_pan_joint" type="revolute">
+    <parent link="base_link"/>
+    <child link="shoulder_link"/>
+    <origin xyz="0 0 0.05" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-6.2831853" upper="6.2831853" effort="150.0" velocity="3.14159"/>
+    <dynamics damping="0.5" friction="0.1"/>
+  </joint>
+
+  <!-- Upper Arm Link -->
+  <link name="upper_arm_link">
+    <visual>
+      <geometry>
+        <cylinder radius="0.05" length="0.425"/>
+      </geometry>
+      <origin xyz="0 0 0.2125" rpy="0 0 0"/>
+      <material name="light_gray">
+        <color rgba="0.8 0.8 0.8 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder radius="0.05" length="0.425"/>
+      </geometry>
+      <origin xyz="0 0 0.2125" rpy="0 0 0"/>
+    </collision>
+    <inertial>
+      <mass value="8.393"/>
+      <origin xyz="0 0 0.2125" rpy="0 0 0"/>
+      <inertia ixx="0.1338" ixy="0.0" ixz="0.0" iyy="0.1338" iyz="0.0" izz="0.0151"/>
+    </inertial>
+  </link>
+
+  <joint name="shoulder_lift_joint" type="revolute">
+    <parent link="shoulder_link"/>
+    <child link="upper_arm_link"/>
+    <origin xyz="0 0.138 0.1125" rpy="0 1.5707963 0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="-6.2831853" upper="6.2831853" effort="150.0" velocity="3.14159"/>
+    <dynamics damping="0.5" friction="0.1"/>
+  </joint>
+
+  <!-- Forearm Link -->
+  <link name="forearm_link">
+    <visual>
+      <geometry>
+        <cylinder radius="0.04" length="0.3922"/>
+      </geometry>
+      <origin xyz="0 0 0.1961" rpy="0 0 0"/>
+      <material name="light_gray"/>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder radius="0.04" length="0.3922"/>
+      </geometry>
+      <origin xyz="0 0 0.1961" rpy="0 0 0"/>
+    </collision>
+    <inertial>
+      <mass value="2.275"/>
+      <origin xyz="0 0 0.1961" rpy="0 0 0"/>
+      <inertia ixx="0.0311" ixy="0.0" ixz="0.0" iyy="0.0311" iyz="0.0" izz="0.0040"/>
+    </inertial>
+  </link>
+
+  <joint name="elbow_joint" type="revolute">
+    <parent link="upper_arm_link"/>
+    <child link="forearm_link"/>
+    <origin xyz="0 -0.131 0.425" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="-3.1415926" upper="3.1415926" effort="150.0" velocity="3.14159"/>
+    <dynamics damping="0.5" friction="0.1"/>
+  </joint>
+
+  <!-- Wrist 1 Link -->
+  <link name="wrist_1_link">
+    <visual>
+      <geometry>
+        <cylinder radius="0.035" length="0.093"/>
+      </geometry>
+      <origin xyz="0 0 0.0465" rpy="0 0 0"/>
+      <material name="metallic_blue"/>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder radius="0.035" length="0.093"/>
+      </geometry>
+      <origin xyz="0 0 0.0465" rpy="0 0 0"/>
+    </collision>
+    <inertial>
+      <mass value="1.219"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0.0025" ixy="0.0" ixz="0.0" iyy="0.0025" iyz="0.0" izz="0.0017"/>
+    </inertial>
+  </link>
+
+  <joint name="wrist_1_joint" type="revolute">
+    <parent link="forearm_link"/>
+    <child link="wrist_1_link"/>
+    <origin xyz="0 0 0.3922" rpy="0 1.5707963 0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="-6.2831853" upper="6.2831853" effort="28.0" velocity="3.14159"/>
+    <dynamics damping="0.2" friction="0.05"/>
+  </joint>
+
+  <!-- Wrist 2 Link -->
+  <link name="wrist_2_link">
+    <visual>
+      <geometry>
+        <cylinder radius="0.035" length="0.095"/>
+      </geometry>
+      <origin xyz="0 0 0.0475" rpy="0 0 0"/>
+      <material name="light_gray"/>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder radius="0.035" length="0.095"/>
+      </geometry>
+      <origin xyz="0 0 0.0475" rpy="0 0 0"/>
+    </collision>
+    <inertial>
+      <mass value="1.219"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0.0025" ixy="0.0" ixz="0.0" iyy="0.0025" iyz="0.0" izz="0.0017"/>
+    </inertial>
+  </link>
+
+  <joint name="wrist_2_joint" type="revolute">
+    <parent link="wrist_1_link"/>
+    <child link="wrist_2_link"/>
+    <origin xyz="0 0.093 0" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-6.2831853" upper="6.2831853" effort="28.0" velocity="3.14159"/>
+    <dynamics damping="0.2" friction="0.05"/>
+  </joint>
+
+  <!-- Wrist 3 Link -->
+  <link name="wrist_3_link">
+    <visual>
+      <geometry>
+        <cylinder radius="0.032" length="0.082"/>
+      </geometry>
+      <origin xyz="0 0 0.041" rpy="0 0 0"/>
+      <material name="metallic_blue"/>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder radius="0.032" length="0.082"/>
+      </geometry>
+      <origin xyz="0 0 0.041" rpy="0 0 0"/>
+    </collision>
+    <inertial>
+      <mass value="0.1879"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0.0001" ixy="0.0" ixz="0.0" iyy="0.0001" iyz="0.0" izz="0.0001"/>
+    </inertial>
+  </link>
+
+  <joint name="wrist_3_joint" type="revolute">
+    <parent link="wrist_2_link"/>
+    <child link="wrist_3_link"/>
+    <origin xyz="0 0 0.095" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="-6.2831853" upper="6.2831853" effort="28.0" velocity="3.14159"/>
+    <dynamics damping="0.2" friction="0.05"/>
+  </joint>
+
+  <!-- Tool0 / Surgical Instrument Link -->
+  <link name="tool0">
+    <visual>
+      <geometry>
+        <cylinder radius="0.006" length="0.15"/>
+      </geometry>
+      <origin xyz="0 0 0.075" rpy="0 0 0"/>
+      <material name="stainless_steel">
+        <color rgba="0.9 0.9 0.95 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder radius="0.006" length="0.15"/>
+      </geometry>
+      <origin xyz="0 0 0.075" rpy="0 0 0"/>
+    </collision>
+    <inertial>
+      <mass value="0.15"/>
+      <origin xyz="0 0 0.075" rpy="0 0 0"/>
+      <inertia ixx="0.0003" ixy="0.0" ixz="0.0" iyy="0.0003" iyz="0.0" izz="0.00001"/>
+    </inertial>
+  </link>
+
+  <joint name="wrist_3_to_tool0" type="fixed">
+    <parent link="wrist_3_link"/>
+    <child link="tool0"/>
+    <origin xyz="0 0.082 0" rpy="-1.5707963 0 0"/>
+  </joint>
+
+</robot>
+

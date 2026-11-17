@@ -1,0 +1,50 @@
+{
+  "vision_and_registration": {
+    "aruco_detection_rate_pct": 100.0,
+    "mean_pixel_centroid_error_px": 0.7071,
+    "max_camera_backprojection_error_px": 0.0,
+    "registration_se3_roundtrip_error_mm": 0.0
+  },
+  "medical_imaging": {
+    "num_dicom_slices": 16,
+    "voxel_patient_roundtrip_max_error_mm": 0.0,
+    "segmented_volume_mm3": 1327.5,
+    "true_volume_mm3": 1436.76,
+    "volume_estimation_error_pct": 7.6,
+    "centroid_localization_error_mm": 0.0,
+    "robot_base_target_coordinates_m": [
+      -0.0,
+      0.37,
+      0.2
+    ],
+    "target_within_surgical_workspace": true
+  },
+  "kinematics_and_control": {
+    "ik_grid_solvability_pct": 100.0,
+    "mean_ik_iterations": 15.3,
+    "max_ik_position_residual_mm": 0.4976,
+    "trajectory_duration_sec": 4.57,
+    "trajectory_steps": 230,
+    "max_planned_cartesian_vel_mps": 0.098,
+    "velocity_limit_violations": 0,
+    "pid_tracking_rmse_mm": 0.8044,
+    "pid_tracking_peak_error_mm": 1.3138
+  },
+  "embedded_hardware": {
+    "total_packets_tested": 500,
+    "valid_packet_success_rate_pct": 100.0,
+    "crc_corruption_detection_rate_pct": 100.0,
+    "encoder_quantization_resolution_rad": 0.001534,
+    "max_telemetry_quantization_error_rad": 0.001123
+  },
+  "latency_and_safety": {
+    "vision_detection_latency_ms": 1.49,
+    "safety_validation_latency_ms": 0.0047,
+    "inverse_kinematics_latency_ms": 4.04,
+    "trajectory_planning_latency_ms": 8.61,
+    "hal_packet_encoding_latency_ms": 0.0114,
+    "total_replanning_pipeline_latency_ms": 14.15,
+    "estop_state_transition_latency_us": 12.5,
+    "replanning_frequency_hz": 70.6
+  }
+}

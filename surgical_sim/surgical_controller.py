@@ -1,7 +1,6 @@
 """
-surgical_controller.py
-======================
-Core ROS2 node for surgical instrument positioning.
+surgical_controller.py: Core ROS2 node for surgical instrument positioning.
+
 Subscribes to /target_pose, validates against workspace limits,
 sends goals to MoveIt2, and monitors tip position error in real time.
 """
